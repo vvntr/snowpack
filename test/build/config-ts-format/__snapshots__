@@ -10,3 +10,32 @@ Array [
 exports[`snowpack build config-ts-format: build/__snowpack__/env.js 1`] = `"export default {\\"MODE\\":\\"production\\",\\"NODE_ENV\\":\\"production\\",\\"SSR\\":false};"`;
 
 exports[`snowpack build config-ts-format: build/_dist_/index.js 1`] = `"console.log('fooey');"`;
+
+exports[`snowpack build config-ts-format: build/export.js 1`] = `"export default \\"/_dist_\\";"`;
+
+exports[`snowpack build config-ts-format: build/package.json 1`] = `
+"{
+  \\"private\\": true,
+  \\"version\\": \\"1.0.1\\",
+  \\"name\\": \\"@snowpack/test-config-ts-format\\",
+  \\"description\\": \\"Test for TypeScript-format config file.\\",
+  \\"scripts\\": {
+    \\"testbuild\\": \\"snowpack build\\"
+  },
+  \\"devDependencies\\": {
+    \\"snowpack\\": \\"^2.12.1\\"
+  }
+}"
+`;
+
+exports[`snowpack build config-ts-format: build/snowpack.config.js 1`] = `
+"import dist from \\"./export.js\\";
+const config = {
+  mount: {
+    \\"./src\\": dist
+  }
+};
+export default config;"
+`;
+
+exports[`snowpack build config-ts-format: build/src/index.js 1`] = `"console.log('fooey');"`;
